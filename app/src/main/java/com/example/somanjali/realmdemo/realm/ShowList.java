@@ -48,6 +48,7 @@ public class ShowList extends AppCompatActivity {
         myPojoList = realm.copyFromRealm(myPojoRealmResults);
 
         realm.close();
+        myadapter.notifyDataSetChanged();
 
 
 

@@ -16,7 +16,14 @@ public class mypojo extends RealmObject {
 
     private String rollNo;
 
-    public mypojo(){
+    public mypojo(Integer id, String name, String rollNo) {
+        this.id = id;
+
+        this.name = name;
+        this.rollNo = rollNo;
+    }
+
+    public mypojo() {
 
     }
 
@@ -28,12 +35,7 @@ public class mypojo extends RealmObject {
         this.id = id;
     }
 
-    public mypojo(Integer id, String name, String rollNo) {
-        this.id=id;
 
-        this.name = name;
-        this.rollNo = rollNo;
-    }
 
 
     public String getName() {
