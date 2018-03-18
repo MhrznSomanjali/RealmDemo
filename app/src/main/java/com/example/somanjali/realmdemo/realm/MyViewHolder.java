@@ -14,7 +14,7 @@ import com.example.somanjali.realmdemo.R.*;
 
 public class MyViewHolder extends RecyclerView.ViewHolder {
 
-    protected TextView name,roll;
+    protected TextView name, roll;
 
     public MyViewHolder(View itemView) {
         super(itemView);
@@ -22,8 +22,8 @@ public class MyViewHolder extends RecyclerView.ViewHolder {
         initViews();
     }
 
-    public void initViews(){
-        name=itemView.findViewById(R.id.nametxt);
-        roll=itemView.findViewById(R.id.rolltxt);
+    public void initViews() {
+        name = itemView.findViewById(R.id.nametxt);
+        roll = itemView.findViewById(R.id.rolltxt);
     }
 }

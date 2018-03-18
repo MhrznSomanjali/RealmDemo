@@ -31,26 +31,27 @@ public class ShowList extends AppCompatActivity {
     }
 
     public void initViews() {
-        recyclerView=findViewById(R.id.rcvMy);
+        recyclerView = findViewById(R.id.rcvMy);
     }
 
-    public void initRecyclerView(){
-        recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
-        myPojoList=new ArrayList<>();
-        myadapter=new MyAdapter(myPojoList);
+    public void initRecyclerView() {
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        myPojoList = new ArrayList<>();
+        myadapter = new MyAdapter(myPojoList);
         recyclerView.setAdapter(myadapter);
     }
-    public void initRealm(){
+
+    public void initRealm() {
         realm = Realm.getDefaultInstance();
 
         RealmResults<mypojo> myPojoRealmResults = realm.where(mypojo.class).findAll();
 
-        myPojoList = realm.copyFromRealm(myPojoRealmResults);
+        //myPojoList = realm.copyFromRealm(myPojoRealmResults);
+
+        myPojoList.addAll(realm.copyFromRealm(myPojoRealmResults));
 
         realm.close();
         myadapter.notifyDataSetChanged();
-
-
 
 
     }

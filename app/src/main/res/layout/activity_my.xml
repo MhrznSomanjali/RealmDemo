@@ -8,51 +8,48 @@
 
     <TextView
         android:id="@+id/name"
-        android:text="Name"
-        android:padding="25dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:padding="25dp"
+        android:text="Name" />
 
     <EditText
         android:id="@+id/nameedit"
         android:layout_width="200sp"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/name"
-        />
+        android:layout_toRightOf="@+id/name" />
 
     <TextView
         android:id="@+id/roll"
-        android:text="Roll"
-        android:padding="25dp"
-        android:layout_below="@+id/name"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/name"
+        android:padding="25dp"
+        android:text="Roll" />
 
     <EditText
         android:id="@+id/rolledit"
         android:layout_width="200sp"
-        android:padding="20dp"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/roll"
         android:layout_below="@+id/nameedit"
-        />
+        android:layout_toRightOf="@+id/roll"
+        android:padding="20dp" />
 
     <Button
         android:id="@+id/save"
-        android:text="Save"
-        android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/roll"/>
+        android:layout_below="@+id/roll"
+        android:layout_centerHorizontal="true"
+        android:text="Save" />
 
     <TextView
         android:id="@+id/showlist"
-        android:text="Show all list"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
         android:layout_width="200dp"
         android:layout_height="40dp"
-        android:textSize="20dp"
-        />
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Show all list"
+        android:textSize="20dp" />
 
 </RelativeLayout>

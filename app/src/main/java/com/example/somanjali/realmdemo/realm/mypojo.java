@@ -36,8 +36,6 @@ public class mypojo extends RealmObject {
     }
 
 
-
-
     public String getName() {
         return name;
     }

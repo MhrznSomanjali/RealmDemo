@@ -16,24 +16,24 @@ import java.util.List;
 public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
     private List<mypojo> Mynamelist;
 
-    public MyAdapter(List<mypojo> Mylist){
-        Mynamelist=Mylist;
+    public MyAdapter(List<mypojo> Mylist) {
+        Mynamelist = Mylist;
 
     }
+
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_myrecycler_view,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_myrecycler_view, parent, false);
 
         return new MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        mypojo myPojo=Mynamelist.get(position);
+        mypojo myPojo = Mynamelist.get(position);
 
         holder.name.setText(myPojo.getName());
         holder.roll.setText(myPojo.getRollNo());
-
     }
 
     @Override

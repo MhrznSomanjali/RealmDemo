@@ -27,7 +27,7 @@ public class MyActivity extends AppCompatActivity implements View.OnClickListene
     private EditText roll;
     private Button save;
     private TextView showlist;
-    private String saveText,showlistText;
+    private String saveText, showlistText;
 
 
     @Override
@@ -38,31 +38,31 @@ public class MyActivity extends AppCompatActivity implements View.OnClickListene
         initviews();
         initListeners();
 
-            }
-            public void initviews(){
-                name=findViewById(R.id.nameedit);
-                roll=findViewById(R.id.rolledit);
-                save=findViewById(R.id.save);
-                showlist=findViewById(R.id.showlist);
+    }
+
+    public void initviews() {
+        name = findViewById(R.id.nameedit);
+        roll = findViewById(R.id.rolledit);
+        save = findViewById(R.id.save);
+        showlist = findViewById(R.id.showlist);
 
 
+    }
 
-            }
+    public void initListeners() {
+        save.setOnClickListener(this);
+        showlist.setOnClickListener(this);
 
-            public void initListeners(){
-                save.setOnClickListener(this);
-                showlist.setOnClickListener(this);
-
-            }
+    }
 
 
     @Override
     public void onClick(View view) {
-                saveText=save.getText().toString().trim();
-                showlistText=showlist.getText().toString().trim();
+        saveText = name.getText().toString().trim();
+        showlistText = roll.getText().toString().trim();
         if (view == save) {
 
-            mypojo myPoJo = new mypojo(1,saveText, showlistText);
+            mypojo myPoJo = new mypojo(1, saveText, showlistText);
 
 
             Realm realm = Realm.getDefaultInstance();
@@ -74,22 +74,17 @@ public class MyActivity extends AppCompatActivity implements View.OnClickListene
             realm.commitTransaction();
             realm.close();
 
-            Toast.makeText(this,"Successful",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Successful", Toast.LENGTH_SHORT).show();
 
         }
         if (view == showlist) {
-            Intent intent=new Intent(MyActivity.this,ShowList.class);
+            Intent intent = new Intent(MyActivity.this, ShowList.class);
             startActivity(intent);
-
-
-
-
 
 
         }
     }
 
 
-
-    }
+}
 
