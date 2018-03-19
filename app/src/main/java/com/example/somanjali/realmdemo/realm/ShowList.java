@@ -4,6 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.widget.Adapter;
 
 import com.example.somanjali.realmdemo.R;
@@ -19,6 +21,7 @@ public class ShowList extends AppCompatActivity {
     private List<mypojo> myPojoList;
     private Realm realm;
     private MyAdapter myadapter;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,10 +31,20 @@ public class ShowList extends AppCompatActivity {
         initViews();
         initRecyclerView();
         initRealm();
+        initToolbar();
     }
 
     public void initViews() {
+
         recyclerView = findViewById(R.id.rcvMy);
+        toolbar=findViewById(R.id.toolBar);
+
+    }
+
+    private void initToolbar(){
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Showlist");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     public void initRecyclerView() {
@@ -54,5 +67,14 @@ public class ShowList extends AppCompatActivity {
         myadapter.notifyDataSetChanged();
 
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId()==android.R.id.home){
+            // android.id.home=default back
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

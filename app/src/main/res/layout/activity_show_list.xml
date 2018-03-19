@@ -6,8 +6,18 @@
     android:layout_height="match_parent"
     tools:context="com.example.somanjali.realmdemo.realm.ShowList">
 
+    <RelativeLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <include layout="@layout/toolbar"
+        />
+
+    </RelativeLayout>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rcvMy"
+        android:layout_below="@+id/layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

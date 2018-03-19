@@ -8,6 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,6 +31,7 @@ public class MyActivity extends AppCompatActivity implements View.OnClickListene
     private Button save;
     private TextView showlist;
     private String saveText, showlistText;
+    private Toolbar toolbar;
 
 
     @Override
@@ -37,16 +41,40 @@ public class MyActivity extends AppCompatActivity implements View.OnClickListene
 
         initviews();
         initListeners();
+        initToolbar();
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater=getMenuInflater();
+        inflater.inflate(R.menu.main_menu,menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId()==R.id.menuFirst){
+            Intent intent=new Intent(this,ShowList.class);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     public void initviews() {
+        toolbar=findViewById(R.id.toolBar);
         name = findViewById(R.id.nameedit);
         roll = findViewById(R.id.rolledit);
         save = findViewById(R.id.save);
         showlist = findViewById(R.id.showlist);
 
 
+    }
+
+    private void initToolbar(){
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Main");
     }
 
     public void initListeners() {
@@ -58,23 +86,35 @@ public class MyActivity extends AppCompatActivity implements View.OnClickListene
 
     @Override
     public void onClick(View view) {
-        saveText = name.getText().toString().trim();
-        showlistText = roll.getText().toString().trim();
-        if (view == save) {
+        if (name==null) {
+            Toast.makeText(this, "name cannot be null", Toast.LENGTH_SHORT).show();
+        }else{
+            saveText = name.getText().toString().trim();
+            if (roll==null) {
+                Toast.makeText(this, "name cannot be null", Toast.LENGTH_SHORT).show();
+            }else{
+                showlistText = roll.getText().toString().trim();
 
-            mypojo myPoJo = new mypojo(1, saveText, showlistText);
+                if (view == save) {
+
+                    mypojo myPoJo = new mypojo( saveText, showlistText);
 
 
-            Realm realm = Realm.getDefaultInstance();
-            realm.beginTransaction();
+                    Realm realm = Realm.getDefaultInstance();
+                    realm.beginTransaction();
 
-            realm.copyToRealmOrUpdate(myPoJo);
+                    realm.copyToRealmOrUpdate(myPoJo);
 
 
-            realm.commitTransaction();
-            realm.close();
+                    realm.commitTransaction();
+                    realm.close();
 
-            Toast.makeText(this, "Successful", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Successful", Toast.LENGTH_SHORT).show();
+
+
+                }
+        }
+
 
         }
         if (view == showlist) {

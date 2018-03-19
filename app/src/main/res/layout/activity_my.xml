@@ -5,19 +5,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.somanjali.realmdemo.realm.MyActivity">
+    <RelativeLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <include layout="@layout/toolbar"
+        />
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="25dp"
+        android:layout_below="@+id/layout"
         android:text="Name" />
 
     <EditText
         android:id="@+id/nameedit"
         android:layout_width="200sp"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/name" />
+        android:layout_toRightOf="@+id/name"
+        android:layout_below="@+id/layout"/>
 
     <TextView
         android:id="@+id/roll"
@@ -25,6 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/name"
         android:padding="25dp"
+
         android:text="Roll" />
 
     <EditText
